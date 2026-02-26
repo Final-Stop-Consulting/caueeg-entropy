@@ -1,0 +1,28 @@
+# Directories not in repo scope
+draft/
+documentation/
+old/
+
+# Large generated data (regenerate with caueeg_entropy_v3.py)
+data_results/caueeg_entropy_v3.csv
+
+# Raw EEG datasets (download separately — see README)
+caueeg-dataset/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.eggs/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,88 @@
+Loaded 1177 subjects
+Groups: {'Normal': 457, 'MCI': 414, 'Dementia': 306}
+
+======================================================================
+DEMENTIA vs NORMAL
+======================================================================
+N = 763
+
+Cross-validated AUCs:
+Model                                   AUC            95% CI
+--------------------------------------------------------------
+Power + SE (no interaction)          0.786  [0.782, 0.789]
+Power + SE + interaction             0.785  [0.781, 0.789]
+Power + SE + Age                     0.867  [0.863, 0.871]
+Power + SE + Age + interaction       0.867  [0.863, 0.871]
+
+Coefficient analysis (full-data fit):
+
+  Power + SE (no interaction) (apparent AUC = 0.787):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -1.1171    0.1413     -7.90    < 0.0001
+    SE_Alpha                0.7710    0.1366      5.65    < 0.0001
+
+  Power + SE + interaction (apparent AUC = 0.787):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -0.5635    6.6809     -0.08      0.9328
+    SE_Alpha                0.7846    0.2127      3.69      0.0002
+    Power_x_SE             -0.5492    6.4987     -0.08      0.9327
+
+  Power + SE + Age (apparent AUC = 0.868):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -1.0313    0.1561     -6.61    < 0.0001
+    SE_Alpha                0.6194    0.1334      4.64    < 0.0001
+    Age                     1.4315    0.1241     11.53    < 0.0001
+
+  Power + SE + Age + interaction (apparent AUC = 0.869):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -0.5148    5.9871     -0.09      0.9315
+    SE_Alpha                0.6305    0.1884      3.35      0.0008
+    Age                     1.4332    0.1247     11.49    < 0.0001
+    Power_x_SE             -0.5170    5.8344     -0.09      0.9294
+
+======================================================================
+MCI vs NORMAL
+======================================================================
+N = 871
+
+Cross-validated AUCs:
+Model                                   AUC            95% CI
+--------------------------------------------------------------
+Power + SE (no interaction)          0.634  [0.629, 0.637]
+Power + SE + interaction             0.634  [0.629, 0.637]
+Power + SE + Age                     0.771  [0.768, 0.776]
+Power + SE + Age + interaction       0.771  [0.768, 0.776]
+
+Coefficient analysis (full-data fit):
+
+  Power + SE (no interaction) (apparent AUC = 0.636):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -0.4600    0.0823     -5.59    < 0.0001
+    SE_Alpha                0.2735    0.0853      3.21      0.0013
+
+  Power + SE + interaction (apparent AUC = 0.636):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -0.5107    2.4760     -0.21      0.8366
+    SE_Alpha                0.2718    0.1266      2.15      0.0318
+    Power_x_SE              0.0503    2.4444      0.02      0.9836
+
+  Power + SE + Age (apparent AUC = 0.775):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -0.3620    0.0887     -4.08    < 0.0001
+    SE_Alpha                0.1630    0.0819      1.99      0.0466
+    Age                     1.0461    0.0927     11.28    < 0.0001
+
+  Power + SE + Age + interaction (apparent AUC = 0.775):
+    Feature                   Coef        SE         z           p
+    ----------------------------------------------------------
+    Power_Ratio            -0.6149    2.1158     -0.29      0.7713
+    SE_Alpha                0.1518    0.1224      1.24      0.2147
+    Age                     1.0472    0.0929     11.27    < 0.0001
+    Power_x_SE              0.2523    2.0969      0.12      0.9042

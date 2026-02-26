@@ -1,0 +1,224 @@
+======================================================================
+CAUEEG ENTROPY ANALYSIS v3 — FINAL PIPELINE
+======================================================================
+Data directory: old\caueeg-dataset
+Output: C:\Users\victo\Ark\The Research\Alz\caueeg_paper\data_results\caueeg_entropy_v3.csv
+
+v3 improvements over v2:
+  1. Per-segment entropy (no concatenation boundary artifacts)
+  2. Spectral power via Welch PSD (alpha, theta, relative, ratio)
+  3. AUCs computed in summary
+  (Plus all v2 corrections: EC extraction, artifact rejection, 4 PE params)
+
+Loaded 1379 annotation records
+Found 1379 EDF files. Processing...
+
+  [1177/1379] 01388 (MCI) | PE_o5d5=0.7942 PE_orig=0.6174 PwrR=2.006 | EC=60s (3seg) | ETA: 0min 0minnn
+
+Processed: 1177, Skipped: 202
+Skip reasons: {'no_group': 192, 'too_short': 3, 'no_ec_data': 7}
+Time: 61.5 minutes
+Saved to: C:\Users\victo\Ark\The Research\Alz\caueeg_paper\data_results\caueeg_entropy_v3.csv
+
+======================================================================
+CAUEEG ENTROPY v3 — RESULTS SUMMARY
+======================================================================
+
+N = 1177
+Groups: {'Normal': 457, 'MCI': 414, 'Dementia': 306}
+
+Pipeline (v3 final):
+  - Eyes-closed extraction: yes (event markers)
+  - Artifact exclusion: yes (±1s buffer around marked events)
+  - Entropy computation: per-segment, weighted average by length
+  - Spectral power: Welch PSD (2s windows, 50% overlap)
+  - Sampling frequency: [200.] Hz
+  - Filter: MNE FIR (firwin), zero-phase
+  - EC data per subject: mean=58.7s, min=11.2s, max=60.0s
+  - Segments per subject: mean=3.1, min=1, max=13
+
+--- DEMOGRAPHICS ---
+  Normal: n=457, age=65.1 ± 9.5
+  MCI: n=414, age=73.8 ± 7.9
+  Dementia: n=306, age=76.5 ± 8.0
+
+======================================================================
+PE PARAMETER COMPARISON (Alpha band)
+======================================================================
+
+--- pe_o5d5: order=5, delay=5, window=100ms, states=120 ---
+  Dementia vs Normal: d=-0.025, t=-0.344, p=0.731274
+  MCI vs Normal: d=-0.034, t=-0.498, p=0.618562
+
+--- pe_o3d10: order=3, delay=10, window=100ms, states=6 ---
+  Dementia vs Normal: d=0.709, t=9.593, p=0.000000 ***
+  MCI vs Normal: d=0.390, t=5.752, p=0.000000 ***
+
+--- pe_o7d3: order=7, delay=3, window=90ms, states=5040 ---
+  Dementia vs Normal: d=0.013, t=0.176, p=0.860435
+  MCI vs Normal: d=-0.036, t=-0.537, p=0.591371
+
+--- pe_o3d1: order=3, delay=1, window=10ms, states=6 ---
+  Dementia vs Normal: d=-0.700, t=-9.482, p=0.000000 ***
+  MCI vs Normal: d=-0.404, t=-5.961, p=0.000000 ***
+
+======================================================================
+HEAD-TO-HEAD: ALL MEASURES (v3 Final Pipeline)
+======================================================================
+
+Measure                        Comparison                 d        t          p    AUC
+-------------------------------------------------------------------------------------
+  PE_Alpha (o5d5, PRIMARY)     Dementia vs Normal  -0.025   -0.344   0.731274 0.513
+  PE_Alpha (o5d5, PRIMARY)     MCI vs Normal       -0.034   -0.498   0.618562 0.511
+  PE_Alpha (o3d1, ORIGINAL)    Dementia vs Normal  -0.700   -9.482   0.000000 0.698 ***
+  PE_Alpha (o3d1, ORIGINAL)    MCI vs Normal       -0.404   -5.961   0.000000 0.612 ***
+  PE_Alpha (o7d3)              Dementia vs Normal   0.013    0.176   0.860435 0.502
+  PE_Alpha (o7d3)              MCI vs Normal       -0.036   -0.537   0.591371 0.516
+  PE_Alpha (o3d10)             Dementia vs Normal   0.709    9.593   0.000000 0.702 ***
+  PE_Alpha (o3d10)             MCI vs Normal        0.390    5.752   0.000000 0.611 ***
+  LZC_Alpha                    Dementia vs Normal   0.345    4.664   0.000004 0.595 ***
+  LZC_Alpha                    MCI vs Normal        0.322    4.751   0.000002 0.593 ***
+  SE_Alpha                     Dementia vs Normal   0.519    7.032   0.000000 0.720 ***
+  SE_Alpha                     MCI vs Normal        0.253    3.732   0.000202 0.599 ***
+  LZC Ratio                    Dementia vs Normal   0.471    6.378   0.000000 0.624 ***
+  LZC Ratio                    MCI vs Normal        0.227    3.345   0.000857 0.560 ***
+  PE Ratio (o5d5)              Dementia vs Normal   0.357    4.830   0.000002 0.595 ***
+  PE Ratio (o5d5)              MCI vs Normal        0.148    2.174   0.029956 0.539 *
+  PE Ratio (o3d1, ORIGINAL)    Dementia vs Normal  -0.230   -3.112   0.001925 0.574 **
+  PE Ratio (o3d1, ORIGINAL)    MCI vs Normal       -0.273   -4.023   0.000062 0.581 ***
+  SE Ratio                     Dementia vs Normal   0.202    2.736   0.006358 0.551 **
+  SE Ratio                     MCI vs Normal        0.144    2.127   0.033663 0.535 *
+  Power Ratio (rel α/θ)        Dementia vs Normal  -0.727   -9.843   0.000000 0.739 ***
+  Power Ratio (rel α/θ)        MCI vs Normal       -0.421   -6.209   0.000000 0.613 ***
+  Alpha Power (relative)       Dementia vs Normal  -0.571   -7.724   0.000000 0.657 ***
+  Alpha Power (relative)       MCI vs Normal       -0.341   -5.029   0.000001 0.584 ***
+  Theta Power (relative)       Dementia vs Normal   0.816   11.053   0.000000 0.717 ***
+  Theta Power (relative)       MCI vs Normal        0.313    4.609   0.000005 0.586 ***
+
+======================================================================
+AGE CORRECTION (primary measures)
+======================================================================
+
+Measure                   Comparison             d_raw  d_ageR     p_ageR AUC_ageR
+-------------------------------------------------------------------------------------
+  pe_o5d5                 Dementia vs Normal  -0.025   0.034   0.645025   0.504
+  pe_o5d5                 MCI vs Normal       -0.034   0.011   0.872093   0.501
+  pe_o3d1                 Dementia vs Normal  -0.700  -0.369   0.000001   0.612 ***
+  pe_o3d1                 MCI vs Normal       -0.404  -0.160   0.018577   0.539 *
+  LZC_R                   Dementia vs Normal   0.471   0.364   0.000001   0.595 ***
+  LZC_R                   MCI vs Normal        0.227   0.143   0.034798   0.537 *
+  SE                      Dementia vs Normal   0.519   0.373   0.000001   0.649 ***
+  SE                      MCI vs Normal        0.253   0.149   0.028387   0.547 *
+  pe_o5d5_R               Dementia vs Normal   0.357   0.279   0.000169   0.573 ***
+  pe_o5d5_R               MCI vs Normal        0.148   0.086   0.205362   0.523
+  pe_o3d1_R               Dementia vs Normal  -0.230   0.057   0.437154   0.506
+  pe_o3d1_R               MCI vs Normal       -0.273  -0.060   0.376072   0.521
+  Power_R                 Dementia vs Normal  -0.727  -0.498   0.000000   0.613 ***
+  Power_R                 MCI vs Normal       -0.421  -0.255   0.000185   0.530 ***
+  Alpha_Pwr               Dementia vs Normal  -0.571  -0.434   0.000000   0.608 ***
+  Alpha_Pwr               MCI vs Normal       -0.341  -0.240   0.000421   0.551 ***
+
+======================================================================
+AGE-MATCHED SUBGROUP (ages 70-80)
+======================================================================
+
+n = 508
+  Normal: n=129, age=74.4 ± 3.0
+  MCI: n=230, age=75.5 ± 3.0
+  Dementia: n=149, age=76.0 ± 3.0
+
+Measure                   Comparison                 d          p    AUC
+------------------------------------------------------------------------
+  pe_o5d5                 Dementia vs Normal  -0.277   0.021906 0.585 *
+  pe_o5d5                 MCI vs Normal       -0.119   0.280794 0.534
+  pe_o3d1                 Dementia vs Normal  -0.766   0.000000 0.709 ***
+  pe_o3d1                 MCI vs Normal       -0.347   0.001725 0.589 **
+  LZC_R                   Dementia vs Normal   0.227   0.060544 0.556
+  LZC_R                   MCI vs Normal        0.103   0.349550 0.527
+  SE                      Dementia vs Normal   0.466   0.000134 0.690 ***
+  SE                      MCI vs Normal        0.246   0.025988 0.583 *
+  Power_R                 Dementia vs Normal  -0.655   0.000000 0.697 ***
+  Power_R                 MCI vs Normal       -0.375   0.000727 0.580 ***
+  Alpha_Pwr               Dementia vs Normal  -0.457   0.000176 0.624 ***
+  Alpha_Pwr               MCI vs Normal       -0.297   0.007347 0.567 **
+
+======================================================================
+CORRELATIONS BETWEEN PE PARAMETERIZATIONS (Alpha band)
+======================================================================
+
+                      pe_o5d5   pe_o3d10    pe_o7d3    pe_o3d1
+  pe_o5d5               1.000      0.469      0.986      0.674
+  pe_o3d10              0.469      1.000      0.552     -0.123
+  pe_o7d3               0.986      0.552      1.000      0.632
+  pe_o3d1               0.674     -0.123      0.632      1.000
+
+======================================================================
+CORRELATIONS: ENTROPY vs SPECTRAL POWER
+======================================================================
+  pe_o5d5_Alpha        vs Alpha_Power_Rel     : r = -0.590 (shared var = 34.8%)
+  pe_o3d1_Alpha        vs Alpha_Power_Rel     : r = -0.143 (shared var = 2.0%)
+  LZC_Alpha            vs Alpha_Power_Rel     : r = -0.698 (shared var = 48.8%)
+  SE_Alpha             vs Alpha_Power_Rel     : r = -0.043 (shared var = 0.2%)
+  pe_o5d5_Alpha        vs Power_Ratio         : r = -0.493 (shared var = 24.3%)
+  pe_o3d1_Alpha        vs Power_Ratio         : r = +0.047 (shared var = 0.2%)
+  LZC_Ratio            vs Power_Ratio         : r = -0.724 (shared var = 52.4%)
+
+======================================================================
+PIPELINE DOCUMENTATION
+======================================================================
+
+Sampling frequency: 200 Hz (consistent across all CAUEEG EDF files)
+Filter: MNE default FIR (firwin design), zero-phase application
+  - Equivalent to scipy.signal.filtfilt with FIR coefficients
+  - No phase distortion
+  - Alpha band: 8-12 Hz bandpass
+  - Theta band: 4-8 Hz bandpass
+
+Entropy computation: PER-SEGMENT with weighted averaging
+  - Each clean eyes-closed segment is filtered independently
+  - Entropy computed within each segment (no cross-boundary artifacts)
+  - Segment-level values combined via weighted average (weight = segment length)
+  - Segments shorter than 50 samples excluded from entropy computation
+  - This addresses the concatenation boundary artifact identified in review
+
+Spectral power: Welch PSD on unfiltered EC data
+  - Window: 2 seconds, 50% overlap (Hann window)
+  - Concatenation acceptable for Welch (windowed, overlap handles boundaries)
+  - Absolute power: integral of PSD within band (trapz)
+  - Relative power: band power / total power (1-45 Hz)
+  - Power Ratio: relative alpha / relative theta
+
+PE Primary parameters: order=5, delay=5
+  - Embedding window: (5-1) * 5 / 200 = 100 ms = 1 alpha cycle at 10 Hz
+  - Number of ordinal states: 5! = 120
+  - Sufficient state-space richness for 60s epochs (12,000 samples)
+
+PE Original parameters (for comparison): order=3, delay=1
+  - Embedding window: (3-1) * 1 / 200 = 10 ms = 0.1 alpha cycles
+  - Number of ordinal states: 3! = 6
+  - Note: measures local slope/curvature of bandpass-filtered signal,
+    not ordinal complexity at the alpha timescale
+
+PE o3d10: order=3, delay=10
+  - Effective sampling rate: 200/10 = 20 Hz (at Nyquist limit for alpha)
+  - Phase-aliasing of ordinal patterns makes this a frequency discriminator
+
+PE o7d3: order=7, delay=3
+  - Number of ordinal states: 7! = 5,040
+  - WARNING: subjects with <12s of EC data have ~2,400 samples
+    insufficient to populate 5,040-bin distribution (finite-sample bias)
+
+Eyes-closed extraction:
+  - Event markers 'Eyes Closed' and 'Eyes Open' used to delimit segments
+  - Segments also terminated by photic stimulation and HV events
+  - Up to 60s of clean EC data extracted per recording
+
+Artifact exclusion:
+  - Events labeled as artifact, Move, chewing, swallowing, Talk, cough,
+    eye blinking, eyelid move, Drowsy, Seizure, sleep Try
+  - ±1 second buffer around each artifact marker
+  - Segments < 2 seconds excluded after artifact removal
+
+======================================================================
+DONE — Review caueeg_entropy_v3.csv for full results
+======================================================================
