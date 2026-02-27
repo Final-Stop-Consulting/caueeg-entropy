@@ -1,12 +1,12 @@
 # Not All Entropy Is Equal
 
-Analysis code and results for: **"Not All Entropy Is Equal: Parameter Sensitivity, Amplitude Blindness, and the Case for Sample Entropy in Dementia EEG"**
+Analysis code and results for: **"Not All Entropy Is Equal: Parameter Sensitivity, Ordinal Blindness, and the Case for Sample Entropy in Dementia EEG"**
 
 Preprint: *TODO — medRxiv link*
 
 ## What This Does
 
-Four scripts that analyze EEG entropy measures as biomarkers for dementia on 1,177 clinical recordings from the CAUEEG dataset. The main findings:
+Six scripts that analyze EEG entropy measures as biomarkers for dementia on 1,177 clinical recordings from the CAUEEG dataset. The main findings:
 
 - Permutation entropy (PE) gives effect sizes from d = −0.700 to d = +0.709 on the *same data* depending on parameter choice — including a direction reversal
 - PE with proper alpha-timescale parameters is a complete null (d = −0.025)
@@ -29,7 +29,7 @@ Raw EEG data is not included. You need to obtain these datasets separately:
 
 **CAUEEG** (required for all scripts): Request access via [the official form](https://forms.gle/gqas9pXfDZLPWqX97). See [Kim et al., 2023](https://doi.org/10.1016/j.neuroimage.2023.120054). Place the downloaded `caueeg-dataset/` folder in the project root or a parent directory — the scripts will find it automatically.
 
-**ds004504** (discovery dataset, referenced in paper only): Available on [OpenNeuro](https://openneuro.org/datasets/ds004504). Not required to run any scripts.
+**ds004504** (discovery dataset): Available on [OpenNeuro](https://openneuro.org/datasets/ds004504). Required only for `test_pe_cross_srate.py`; all other scripts use CAUEEG only.
 
 ## Scripts
 
@@ -64,6 +64,14 @@ Reads the v3 CSV and produces 4 figures in `figures/`:
 ### 4. `analysis_code/test_interaction_term.py` — Interaction term test (~2 min)
 
 Tests whether Power_Ratio × SE_α interaction improves the logistic model. Reports cross-validated AUCs with and without interaction, plus Wald test coefficients. Spoiler: the interaction is non-significant (p = 0.93), confirming pure linear additivity.
+
+### 5. `analysis_code/test_se_tolerance.py` — SE tolerance sensitivity (~30–60 min)
+
+Tests whether SE_α results are robust across tolerance values (r = 0.15, 0.20, 0.25 × SD). Recomputes SE from raw EEG data with each tolerance, reports effect sizes, AUCs, cross-validated combined model performance, and inter-tolerance correlations. Demonstrates that SE is not parameter-fragile in the way PE is.
+
+### 6. `analysis_code/test_pe_cross_srate.py` — Cross-sampling-rate PE test (~5 min)
+
+Replicates the PE parameterization analysis on ds004504 (500 Hz) to test whether effects map to physical timescale rather than parameter values. Compares timescale-matched parameterizations (same embedding window in ms) against parameter-matched parameterizations (same order/delay values) across the two sampling rates.
 
 ## Results
 

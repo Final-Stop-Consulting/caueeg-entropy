@@ -270,7 +270,7 @@ def weighted_mean_segments(segments, func):
     values = []
     weights = []
     for seg in segments:
-        if len(seg) < 50:  # Skip very short segments
+        if len(seg) < 400:  # Skip segments < 2s (avoids finite-sample bias + filter edge artifacts)
             continue
         val = func(seg)
         if not np.isnan(val):
@@ -849,7 +849,7 @@ Entropy computation: PER-SEGMENT with weighted averaging
   - Each clean eyes-closed segment is filtered independently
   - Entropy computed within each segment (no cross-boundary artifacts)
   - Segment-level values combined via weighted average (weight = segment length)
-  - Segments shorter than 50 samples excluded from entropy computation
+  - Segments shorter than 400 samples (2s at 200 Hz) excluded from entropy computation
   - This addresses the concatenation boundary artifact identified in review
 
 Spectral power: Welch PSD on unfiltered EC data

@@ -1,0 +1,57 @@
+
+======================================================================
+CROSS-SAMPLING-RATE PE PARAMETERIZATION TEST
+======================================================================
+Dataset: ds004504 (OpenNeuro)
+Sampling rate: 500 Hz
+N = 88 subjects
+Groups: {'AD': 36, 'Control': 29, 'FTD': 23}
+
+PE Parameterizations at 500 Hz:
+Label                 Order  Delay    Window  States  Note
+-------------------------------------------------------------------------------------
+pe_100ms_o5               5     13    104 ms     120  Proper alpha (matches pe_o5d5 at 200Hz: 100ms)
+pe_100ms_o3               3     25    100 ms       6  Coarse alpha (matches pe_o3d10 at 200Hz: 100ms)
+pe_10ms_o3                3      3     12 ms       6  Sub-cycle (matches pe_o3d1 at 200Hz: 10ms)
+pe_90ms_o7                7      8     96 ms    5040  Rich state space (matches pe_o7d3 at 200Hz: 90ms)
+pe_o5d5_raw               5      5     40 ms     120  Same params as CAUEEG o5d5, but 40ms window at 500Hz
+pe_o3d1_raw               3      1      4 ms       6  Same params as CAUEEG o3d1, but 4ms window at 500Hz
+
+======================================================================
+AD vs CONTROL (timescale-matched parameterizations)
+======================================================================
+N = 65 (AD: 36, Control: 29)
+
+Parameterization            d         t             p     AUC    Window
+----------------------------------------------------------------------
+pe_100ms_o5            +0.720     -2.81        0.0075   0.679    104 ms
+pe_100ms_o3            +1.113     -4.34      < 0.0001   0.789    100 ms
+pe_10ms_o3             +0.448     -1.78        0.0804   0.606     12 ms
+pe_90ms_o7             +0.743     -2.90        0.0060   0.684     96 ms
+pe_o5d5_raw            +0.678     -2.66        0.0108   0.669     40 ms
+pe_o3d1_raw            +0.894     -3.64        0.0006   0.692      4 ms
+
+
+======================================================================
+INTERPRETATION: TIMESCALE vs PARAMETER COMPARISON
+======================================================================
+
+If PE sensitivity maps to PHYSICAL TIMESCALE:
+  - pe_100ms_o5 (500Hz) should match pe_o5d5 (200Hz): both null
+  - pe_10ms_o3 (500Hz) should match pe_o3d1 (200Hz): both large negative d
+  - pe_100ms_o3 (500Hz) should match pe_o3d10 (200Hz): both large positive d
+
+If PE sensitivity maps to PARAMETER VALUES:
+  - pe_o5d5_raw (500Hz) should match pe_o5d5 (200Hz)
+  - pe_o3d1_raw (500Hz) should match pe_o3d1 (200Hz)
+  But these have DIFFERENT physical timescales (40ms vs 100ms, 4ms vs 10ms)
+
+The timescale hypothesis predicts that matching physical windows across sampling
+rates will reproduce the effect pattern, while matching parameter values will NOT.
+This would confirm that the parameter sensitivity is fundamentally a timescale
+phenomenon, not an artifact of specific parameter values.
+
+NOTE: ds004504 is a smaller dataset (N=88) with different demographics, no
+eyes-closed extraction, and mixed dementia types (AD + FTD). Effect sizes
+will differ from CAUEEG, but the DIRECTION PATTERN should be consistent
+if the timescale hypothesis holds.

@@ -12,7 +12,7 @@ Power_Ratio alone               0.739  [0.735, 0.741]
 SE_Alpha alone                  0.721  [0.718, 0.724]
 LZC_Ratio alone                 0.624  [0.622, 0.627]
 Power_Ratio + SE_Alpha          0.786  [0.782, 0.789]
-Power_Ratio + LZC_Ratio         0.752  [0.749, 0.755]
+Power_Ratio + LZC_Ratio         0.751  [0.749, 0.755]
 Power + SE + LZC                0.797  [0.792, 0.801]
 Power + SE + Age                0.867  [0.863, 0.871]
 
@@ -24,11 +24,11 @@ N = 871 (Normal: 457, MCI: 414)
 Model                              AUC            95% CI
 --------------------------------------------------------
 Power_Ratio alone               0.613  [0.611, 0.615]
-SE_Alpha alone                  0.599  [0.597, 0.602]
-LZC_Ratio alone                 0.559  [0.556, 0.560]
-Power_Ratio + SE_Alpha          0.634  [0.629, 0.637]
+SE_Alpha alone                  0.599  [0.598, 0.602]
+LZC_Ratio alone                 0.559  [0.556, 0.561]
+Power_Ratio + SE_Alpha          0.635  [0.630, 0.638]
 Power_Ratio + LZC_Ratio         0.627  [0.622, 0.629]
-Power + SE + LZC                0.639  [0.636, 0.642]
+Power + SE + LZC                0.640  [0.637, 0.642]
 Power + SE + Age                0.771  [0.768, 0.776]
 
 ======================================================================
@@ -48,7 +48,7 @@ MCI vs Norm:
   Power_Ratio alone               AUC = 0.613
   SE_Alpha alone                  AUC = 0.599
   LZC_Ratio alone                 AUC = 0.560
-  Power_Ratio + SE_Alpha          AUC = 0.636
+  Power_Ratio + SE_Alpha          AUC = 0.637
   Power_Ratio + LZC_Ratio         AUC = 0.630
   Power + SE + LZC                AUC = 0.646
   Power + SE + Age                AUC = 0.775
