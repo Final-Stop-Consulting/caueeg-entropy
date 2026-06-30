@@ -39,9 +39,9 @@ mne.set_log_level('ERROR')
 SCRIPT_DIR = Path(__file__).parent
 CANDIDATES = [
     Path("caueeg-dataset"),
-    Path("old/caueeg-dataset"),
-    Path("../old/caueeg-dataset"),
+    Path("data/caueeg-dataset"),
     SCRIPT_DIR.parent / "caueeg-dataset",
+    SCRIPT_DIR.parent / "data" / "caueeg-dataset",
     SCRIPT_DIR.parent.parent / "caueeg-dataset",
 ]
 

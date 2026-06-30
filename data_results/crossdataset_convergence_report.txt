@@ -1,0 +1,4 @@
+Cross-dataset convergence (binary label is a heuristic; read the effect sizes)
+DECISION (heuristic): P1 (convergence)
+headline pe_o5d5: d_CAUEEG=+0.056 d_ds004504=+0.722
+A=True B=True C=True spearman=+1.000 pearson=+0.997

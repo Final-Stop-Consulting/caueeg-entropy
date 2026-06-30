@@ -37,12 +37,11 @@ SCRIPT_DIR = Path(__file__).parent
 # Search for ds004504 dataset
 DS_CANDIDATES = [
     Path("ds004504"),
+    Path("data/ds004504"),
     Path("../ds004504"),
-    Path("../old/ds004504"),
-    Path("../../old/ds004504"),
     SCRIPT_DIR.parent / "ds004504",
+    SCRIPT_DIR.parent / "data" / "ds004504",
     SCRIPT_DIR.parent.parent / "ds004504",
-    SCRIPT_DIR.parent.parent / "old" / "ds004504",
 ]
 
 DATASET_PATH = None

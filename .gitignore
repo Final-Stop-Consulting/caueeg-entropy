@@ -3,13 +3,13 @@ draft/
 documentation/
 old/
 
-# Large generated data (regenerate with scripts)
-data_results/caueeg_entropy_v3.csv
-data_results/se_tolerance_values.csv
-data_results/pe_cross_srate_values.csv
-
-# Raw EEG datasets (download separately — see README)
+# Raw EEG datasets (large; obtained separately — see README)
+data/
 caueeg-dataset/
+ds004504/
+
+# Working / manuscript / planning folders (not part of the public analysis repo)
+Revision/
 
 # Python
 __pycache__/
