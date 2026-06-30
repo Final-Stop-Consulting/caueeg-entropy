@@ -116,10 +116,17 @@ If you use this code, please cite the preprint (TODO) and the datasets:
   journal={NeuroImage}, volume={272}, pages={120054}, year={2023}, publisher={Elsevier}
 }
 
+@misc{miltiadous2024ds004504,
+  title={A dataset of EEG recordings from: Alzheimer's disease, Frontotemporal dementia and Healthy subjects},
+  author={Miltiadous, Andreas and Tzimourta, Katerina D. and Afrantou, Theodora and Ioannidis, Panagiotis and Grigoriadis, Nikolaos and Tsalikakis, Dimitrios G. and Angelidis, Pantelis and Tsipouras, Markos G. and Glavas, Evripidis and Giannakeas, Nikolaos and Tzallas, Alexandros T.},
+  year={2024}, publisher={OpenNeuro}, note={[Dataset], version 1.0.8 (version analyzed)}, doi={10.18112/openneuro.ds004504.v1.0.8}
+}
+
+% Companion data descriptor:
 @article{miltiadous2023dataset,
   title={A dataset of scalp EEG recordings of Alzheimer's disease, frontotemporal dementia and healthy subjects from routine EEG},
-  author={Miltiadous, Andreas and others},
-  journal={Data}, volume={8}, number={6}, pages={95}, year={2023}
+  author={Miltiadous, Andreas and Tzimourta, Katerina D. and Afrantou, Theodora and Ioannidis, Panagiotis and Grigoriadis, Nikolaos and Tsalikakis, Dimitrios G. and Angelidis, Pantelis and Tsipouras, Markos G. and Glavas, Evripidis and Giannakeas, Nikolaos and Tzallas, Alexandros T.},
+  journal={Data}, volume={8}, number={6}, pages={95}, year={2023}, doi={10.3390/data8060095}
 }
 ```
 
